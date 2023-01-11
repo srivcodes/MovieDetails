@@ -1,0 +1,14 @@
+$background-colour: pink;
+$primary-colour: #ffc234;
+$secondary-colour: #abce45;
+
+*{
+    background-color: $background-colour;
+}
+
+.heading{
+    display: flex;
+    justify-content: center;
+    color: $primary-colour;
+    padding: 5px;
+}
