@@ -2,22 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import useMovieFetch from '../../hooks/useMovieFetch';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 export const MovieDetails = () => {
+  const [wishlistItems, setwishlistItems] = useLocalStorage('wishlist', []);
   const params = useParams();
   const { data, error, loading } = useMovieFetch(`movie/${params.movieId}`);
-
   const handleSubmit = () => {
-    let wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
     let itemExists = wishlistItems.find((o) => o.id === data.id);
     if (itemExists) {
       return;
     }
     wishlistItems.push(data);
-    localStorage.setItem('wishlist', JSON.stringify(wishlistItems));
+    setwishlistItems(wishlistItems);
     window.dispatchEvent(new Event('local-storage'));
   };
- 
+
   if (error) {
     return <div>{error}</div>;
   }
