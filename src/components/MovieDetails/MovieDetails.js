@@ -9,15 +9,15 @@ export const MovieDetails = () => {
 
   const handleSubmit = () => {
     let wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
-    let itemExists = wishlistItems.find((o) => o.id === details.id);
+    let itemExists = wishlistItems.find((o) => o.id === data.id);
     if (itemExists) {
       return;
     }
-    wishlistItems.push(details);
+    wishlistItems.push(data);
     localStorage.setItem('wishlist', JSON.stringify(wishlistItems));
     window.dispatchEvent(new Event('local-storage'));
   };
-  console.log(data, 'movie details');
+ 
   if (error) {
     return <div>{error}</div>;
   }

@@ -13,7 +13,6 @@ export const CarousalSection = ({ name, id }) => {
   if (loading) {
     return <div>loading...</div>;
   }
-  console.log(data, 'data');
   return (
     <div>
       <h3>{name}</h3>
