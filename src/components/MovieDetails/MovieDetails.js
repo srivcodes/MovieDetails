@@ -15,9 +15,10 @@ export const MovieDetails = () => {
   }, []);
 
   const handleSubmit = () => {
-    let wishlistItems = JSON.parse(localStorage.getItem('wishlist'));
-    if (wishlistItems === null) {
-      wishlistItems = [];
+    let wishlistItems = JSON.parse(localStorage.getItem('wishlist')) || [];
+    let itemExists = wishlistItems.find((o) => o.id === details.id);
+    if (itemExists) {
+      return;
     }
     wishlistItems.push(details);
     localStorage.setItem('wishlist', JSON.stringify(wishlistItems));

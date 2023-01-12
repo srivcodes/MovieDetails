@@ -4,9 +4,6 @@ import { App } from './App';
 import './App.scss';
 import {
   createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link
 } from 'react-router-dom';
 import { routes } from './routes';
 
