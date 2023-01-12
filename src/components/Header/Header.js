@@ -14,6 +14,10 @@ export const Header = () => {
       const items = JSON.parse(localStorage.getItem('wishlist'));
       items ? setWishListCount(items.length) : setWishListCount(0);
     });
+    return () =>
+      window.removeEventListener('local-storage', () =>
+        console.log('removed listener')
+      );
   }, []);
 
   function removeWishlistHandler(item) {

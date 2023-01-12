@@ -8,10 +8,6 @@ export const routes = [
     element: <App />
   },
   {
-    path: '/details',
-    element: <MovieDetails />
-  },
-  {
     path: '/details/:movieId',
     element: <MovieDetails />,
     exact: true

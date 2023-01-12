@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import useMovieFetch from '../../hooks/useMovieFetch';
 
 export const CarousalSection = ({ name, id }) => {
-  const [movies, setMovies] = useState([]);
-  useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.API_KEY}&with_genres=${id}`
-    )
-      .then((resp) => resp.json())
-      .then((data) => setMovies(data.results))
-      .catch((error) => console.error(error));
-  }, []);
+  const { data, error, loading } = useMovieFetch(
+    'discover/movie',
+    `with_genres=${id}`
+  );
+  if (error) {
+    return <div>{error}</div>;
+  }
+  if (loading) {
+    return <div>loading...</div>;
+  }
+  console.log(data, 'data');
   return (
     <div>
       <h3>{name}</h3>
       <ul className="movie-list">
-        {movies.map(({ poster_path, original_title, id }) => (
+        {data?.results?.map(({ poster_path, original_title, id }) => (
           <li className="list-style">
             <Link to={`/details/${id}`}>
               <img
@@ -24,7 +27,7 @@ export const CarousalSection = ({ name, id }) => {
                 height="300"
                 width="200"
               />
-              <p className='title-style'>{original_title}</p>
+              <p className="title-style">{original_title}</p>
             </Link>
           </li>
         ))}
