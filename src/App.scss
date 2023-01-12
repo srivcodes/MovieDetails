@@ -1,14 +1,21 @@
-$background-colour: pink;
-$primary-colour: #ffc234;
-$secondary-colour: #abce45;
+@import "./components/CarousalSection/CarousalSection.scss";
+@import "./components/MovieDetails/MovieDetails.scss";
+@import './components/Header/Header.scss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+
+$background-colour: #eaebea;
+$text-colour: #0c0c0c;
+$secondary-colour: #d8323c;
 
 *{
     background-color: $background-colour;
+    font-family: 'Inter', sans-serif;
 }
 
 .heading{
     display: flex;
     justify-content: center;
-    color: $primary-colour;
     padding: 5px;
+    color: $secondary-colour;
+    font-size: 50px;
 }

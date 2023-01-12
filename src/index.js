@@ -1,10 +1,17 @@
-require('file-loader?name=[name].[ext]!./index.html');
 import React from 'react';
-import  ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { App } from './App';
-import './App.scss'
+import './App.scss';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link
+} from 'react-router-dom';
+import { routes } from './routes';
 
-const appElement = document.getElementById('app');
+const container = document.getElementById('app');
 
+const router = createBrowserRouter(routes);
 
-ReactDOM.render(<App />, appElement);
+createRoot(container).render(<App />);
