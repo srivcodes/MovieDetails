@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Drawer from '../Drawer/Drawer';
+import Drawer from '@components/Drawer/Drawer';
 import { FaRegHeart, FaArrowRight } from 'react-icons/fa';
-import useLocalStorage from '../../hooks/useLocalStorage';
+import useLocalStorage from '@hooks/useLocalStorage';
 
 export const Header = () => {
   const [wishItems, setWishItems] = useLocalStorage('wishlist', []);

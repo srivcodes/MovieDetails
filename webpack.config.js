@@ -2,12 +2,14 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin =
+  require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'index.bundle.js',
+    filename: 'bundle.js',
     publicPath: '/'
   },
   devServer: {
@@ -26,15 +28,29 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
+        ],
+        sideEffects: true
       }
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({ filename: '[name].css' }),
     new Dotenv(),
-    new HtmlWebpackPlugin({
-      template: './src/index.html'
-    })
-  ]
+    new HtmlWebpackPlugin()
+    // new BundleAnalyzerPlugin()
+  ],
+  resolve: {
+    alias: {
+      '@pages': path.resolve(__dirname, 'src/pages'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@hooks': path.resolve(__dirname, 'src/hooks')
+    }
+  }
 };

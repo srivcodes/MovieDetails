@@ -2,8 +2,8 @@ import React, { useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import FocusTrap from 'focus-trap-react';
 import cn from 'classnames';
-import useMountTransition from './useMountTransition';
-import './Drawer.scss';
+import useMountTransition from '@hooks/useMountTransition';
+
 
 function createPortalRoot() {
   const drawerRoot = document.createElement('div');

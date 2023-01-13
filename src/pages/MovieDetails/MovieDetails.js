@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Header } from '../Header/Header';
-import useMovieFetch from '../../hooks/useMovieFetch';
-import useLocalStorage from '../../hooks/useLocalStorage';
+
+import { Header } from '@components/Header/Header';
+
+import useMovieFetch from '@hooks/useMovieFetch';
+import useLocalStorage from '@hooks/useLocalStorage';
 
 export const MovieDetails = () => {
   const [wishlistItems, setwishlistItems] = useLocalStorage('wishlist', []);
   const params = useParams();
   const { data, error, loading } = useMovieFetch(`movie/${params.movieId}`);
+
   const handleSubmit = () => {
     let itemExists = wishlistItems.find((o) => o.id === data.id);
     if (itemExists) {
@@ -27,7 +30,7 @@ export const MovieDetails = () => {
   return (
     <div>
       <Header />
-      <div className="details-section">
+      <div className={`details-${params.genreName}`}>
         <img
           src={`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`}
           alt={data?.original_title}
@@ -37,7 +40,7 @@ export const MovieDetails = () => {
         <div className="description-section">
           <h1>{data?.original_title}</h1>
           <p>{data?.overview}</p>
-          <button className="primary-btn" onClick={handleSubmit}>
+          <button className={`primary-btn`} onClick={handleSubmit}>
             Add to Wishlist
           </button>
         </div>

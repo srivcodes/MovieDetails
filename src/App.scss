@@ -1,22 +1,32 @@
-@import "./components/CarousalSection/CarousalSection.scss";
-@import "./components/MovieDetails/MovieDetails.scss";
-@import './components/Header/Header.scss';
-@import './components/Drawer/Drawer.scss';
+// font families
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+
+// components
+@import '@components/CarousalSection/CarousalSection.scss';
+@import '@components/Header/Header.scss';
+@import '@components/Drawer/Drawer.scss';
+
+// pages
+@import '@pages/MovieDetails/MovieDetails.scss';
+@import '@pages/Home/Home.scss';
 
 $background-colour: #eaebea;
 $text-colour: #0c0c0c;
 $secondary-colour: #d8323c;
 
-*{
-    background-color: $background-colour;
-    font-family: 'Inter', sans-serif;
+* {
+  background-color: $background-colour;
+  font-size: responsive;
+  user-select: none;
 }
 
-.heading{
-    display: flex;
-    justify-content: center;
-    padding: 5px;
-    color: $secondary-colour;
-    font-size: 50px;
+.heading {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  color: $secondary-colour;
+  font-size: 50px;
 }

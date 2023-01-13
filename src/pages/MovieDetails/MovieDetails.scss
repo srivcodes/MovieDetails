@@ -1,0 +1,42 @@
+@mixin button-bg($bg) {
+  background: $bg;
+  color: white;
+  &:hover {
+    background: darken($bg, 8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    background: darken($bg, 25%);
+  }
+}
+
+@mixin font-family($font) {
+  font-family: $font;
+}
+
+.details-action {
+  .primary-btn {
+    @include button-bg(orange);
+  }
+  @include font-family(Libre Baskerville);
+}
+.details-adventure {
+  .primary-btn {
+    @include button-bg(green);
+  }
+  @include font-family(Rowdies);
+}
+.details-animation {
+  .primary-btn {
+    @include button-bg(blue);
+  }
+  @include font-family(Source Code Pro);
+}
+
+.description-section {
+  padding-left: 50px;
+}
+
+.primary-btn {
+  padding: 6px 12px;
+}
