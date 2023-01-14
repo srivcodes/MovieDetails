@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import useMovieFetch from '@hooks/useMovieFetch';
+import Carousel from '../Carousel/Carousel';
+
 export const CarousalSection = ({ name: genreName, id: genreId }) => {
   const { data, error, loading } = useMovieFetch(
     'discover/movie',
@@ -14,22 +15,8 @@ export const CarousalSection = ({ name: genreName, id: genreId }) => {
   }
   return (
     <div>
-      <h3>{genreName}</h3>
-      <ul className="movie-list">
-        {data?.results?.map(({ poster_path, original_title, id }) => (
-          <li className="list-style">
-            <Link to={`/details/${id}/${genreName.toLowerCase()}`}>
-              <img
-                src={`https://image.tmdb.org/t/p/w185/${poster_path}`}
-                alt={original_title}
-                height="300"
-                width="200"
-              />
-              <p className="title-style">{original_title}</p>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <h3 className="genre-heading">{genreName}</h3>
+      {data ? <Carousel movies={data.results} genreName={genreName} /> : null}
     </div>
   );
 };

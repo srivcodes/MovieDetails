@@ -1,12 +1,36 @@
-.movie-list{
-    display: flex;
+.movie-list {
+  display: flex;
 }
 
-.list-style{
-    padding: 0 30px;
-    list-style: none;
+.list-style {
+  padding: 0 30px;
+  list-style: none;
 }
 
-.title-style{
-    text-decoration: none;
+.title-style {
+  text-decoration: none;
+}
+
+.genre-heading {
+  padding: 50px 0px;
+}
+
+.nav-arrow {
+  position: absolute;
+  text-decoration: none;
+  width: 10px;
+  padding: 20px;
+  text-align: center;
+  z-index: 1;
+  cursor: pointer;
+  &:nth-of-type(1) {
+    top: 0;
+    bottom: 0;
+    left: 0;
+  }
+  &:nth-of-type(2) {
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
 }

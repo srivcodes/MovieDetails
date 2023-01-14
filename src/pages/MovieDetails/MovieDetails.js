@@ -30,7 +30,7 @@ export const MovieDetails = () => {
   return (
     <div>
       <Header />
-      <div className={`details-${params.genreName}`}>
+      <div className={`details-${params.genreName} page-layout`}>
         <img
           src={`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`}
           alt={data?.original_title}

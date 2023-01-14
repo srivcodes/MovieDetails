@@ -1,0 +1,26 @@
+.container {
+  position: relative;
+}
+
+.list-container {
+  width: calc(100% - 80px);
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  list-style: none;
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+.list-container .item {
+  flex: 0 0 270px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chevron-style {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}

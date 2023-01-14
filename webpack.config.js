@@ -43,7 +43,11 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({ filename: '[name].css' }),
     new Dotenv(),
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+      title: 'Movie Details',
+      filename: 'index.html',
+      template: './src/index.html'
+    })
     // new BundleAnalyzerPlugin()
   ],
   resolve: {
