@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import { useDeviceScreen } from './useDeviceScreen';
+import { useDeviceScreen } from '../hooks/useDeviceScreen';
 
 test('should tell it is a mobile screen', () => {
   const { result } = renderHook(() => useDeviceScreen());

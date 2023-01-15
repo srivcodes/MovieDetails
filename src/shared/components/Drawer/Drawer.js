@@ -3,7 +3,7 @@ import useLocalStorage from '@hooks/useLocalStorage';
 import { RxCross2 } from 'react-icons/rx';
 
 export const Drawer = () => {
-  const [wishItems, setWishItems] = useLocalStorage('wishlist', []);
+  const { wishItems, setWishItems } = useLocalStorage('wishlist', []);
 
   function removeWishItem(item) {
     const updatedWishlist = wishItems.filter((wish) => wish.id !== item.id);

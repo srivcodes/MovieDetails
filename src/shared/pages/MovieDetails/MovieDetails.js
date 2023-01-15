@@ -6,7 +6,7 @@ import { Header } from '@components/Header/Header';
 import useLocalStorage from '@hooks/useLocalStorage';
 
 export const MovieDetails = ({ data: serverData }) => {
-  const [wishlistItems, setwishlistItems] = useLocalStorage('wishlist', []);
+  const { wishlistItems, setwishlistItems } = useLocalStorage('wishlist', []);
   const params = useParams();
 
   const [data] = useState(() => {

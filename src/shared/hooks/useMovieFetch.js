@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function useMovieFetch(type, params) {
   const [data, setData] = useState();
@@ -30,5 +30,5 @@ export default function useMovieFetch(type, params) {
     };
   }, [type]);
 
-  return { data, loading, error, fetchData };
+  return { data, loading, error };
 }

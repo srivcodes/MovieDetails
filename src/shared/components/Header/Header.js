@@ -4,7 +4,7 @@ import { FaRegHeart, FaArrowRight } from 'react-icons/fa';
 import useLocalStorage from '@hooks/useLocalStorage';
 
 export const Header = () => {
-  const [wishItems, setWishItems] = useLocalStorage('wishlist', []);
+  const { wishItems } = useLocalStorage('wishlist', []);
   const [isOpen, setIsOpen] = useState();
   const [hasMounted, setHasMounted] = useState(false);
 
