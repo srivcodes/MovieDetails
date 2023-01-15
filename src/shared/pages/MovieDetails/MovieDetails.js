@@ -6,10 +6,14 @@ import { Header } from '@components/Header/Header';
 import useMovieFetch from '@hooks/useMovieFetch';
 import useLocalStorage from '@hooks/useLocalStorage';
 
-export const MovieDetails = () => {
+export const MovieDetails = ({ data: serverData }) => {
   const [wishlistItems, setwishlistItems] = useLocalStorage('wishlist', []);
   const params = useParams();
-  const { data, error, loading } = useMovieFetch(`movie/${params.movieId}`);
+  // const { data, error, loading } = useMovieFetch(`movie/${params.movieId}`);
+
+  const [data, setData] = useState(() => {
+    return _isBrowser_ ? window.__INITIAL_DATA__ : serverData;
+  });
 
   const handleSubmit = () => {
     let itemExists = wishlistItems.find((o) => o.id === data.id);
@@ -21,12 +25,12 @@ export const MovieDetails = () => {
     window.dispatchEvent(new Event('local-storage'));
   };
 
-  if (error) {
-    return <div>{error}</div>;
-  }
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (error) {
+  //   return <div>{error}</div>;
+  // }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
   return (
     <div>
       <Header />

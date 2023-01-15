@@ -1,17 +1,19 @@
 import { Home } from '@pages/Home/Home';
 import { MovieDetails } from '@pages/MovieDetails/MovieDetails';
-import { fetchMovieDetailsById } from './api';
+import { fetchMovieDetailsById, fetchGenres } from './api';
 
 const routes = [
   {
     path: '/',
-    component: Home
+    component: Home,
+    fetchInitialData: () => fetchGenres()
   },
   {
     path: '/details/:movieId/:genreName',
     component: MovieDetails,
-    fetchInitialData: (path = ' ') =>
-      fetchMovieDetailsById(path.split('/').pop())
+    fetchInitialData: (path) => {
+      return fetchMovieDetailsById(path.split('/')[2]);
+    }
   }
 ];
 

@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const nodeExternals = require('webpack-node-externals');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = [
   {
@@ -34,6 +35,10 @@ module.exports = [
               loader: 'babel-loader'
             }
           ]
+        },
+        {
+          test: /\.scss$/,
+          use: ['ignore-loader']
         }
       ]
     },
@@ -47,7 +52,6 @@ module.exports = [
       }
     },
     plugins: [
-      new MiniCssExtractPlugin(),
       new webpack.DefinePlugin({
         _isBrowser_: 'false'
       })
@@ -76,29 +80,27 @@ module.exports = [
           }
         },
         {
-          test: /\.scss$/,
+          test: /\.(sa|sc|c)ss$/i,
+          // test: /\.css$/,
           use: [
-            {
-              loader: MiniCssExtractPlugin.loader
-            },
+            MiniCssExtractPlugin.loader,
             'css-loader',
-            'postcss-loader',
+            // 'postcss-loader',
             'sass-loader'
-          ],
-          sideEffects: true
+          ]
         }
       ]
     },
     plugins: [
-      new MiniCssExtractPlugin(),
-      new Dotenv(),
-      new HtmlWebpackPlugin({
-        template: './src/index.html',
-        favicon: './src/favicon.gif'
+      new MiniCssExtractPlugin({
+        filename: '[name].css',
+        chunkFilename: '[id].css'
       }),
+      new Dotenv(),
       new webpack.DefinePlugin({
         _isBrowser_: 'true'
       })
+
       // new BundleAnalyzerPlugin()
     ],
     resolve: {
@@ -108,6 +110,10 @@ module.exports = [
         '@hooks': path.resolve(__dirname, 'src/shared/hooks'),
         '@styles': path.resolve(__dirname, 'src/shared/styles')
       }
+    },
+    optimization: {
+      minimize: true,
+      minimizer: [new TerserPlugin()]
     }
   }
 ];

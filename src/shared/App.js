@@ -6,9 +6,10 @@ import FallbackPage from '@pages/404';
 
 import routes from './routes';
 
+import './app.scss';
+
 export function App(props) {
   const serverData = props;
-  console.log(serverData);
   return (
     <Routes>
       {routes.map(({ path, component: C, fetchInitialData }) => {

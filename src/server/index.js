@@ -21,11 +21,8 @@ app.use(express.static('dist'));
 app.get('*', (req, res, next) => {
   const activeRoute =
     routes.find((route) => {
-      console.log('path', route.path);
-      console.log('url..', req.url);
       return matchPath(route.path, req.url);
     }) || {};
-  console.log('activeRoute', activeRoute);
 
   const promise = activeRoute.fetchInitialData
     ? activeRoute.fetchInitialData(req.path)
@@ -33,7 +30,7 @@ app.get('*', (req, res, next) => {
 
   promise
     .then((data) => {
-      const markup = renderToPipeableStream(
+      const markup = renderToString(
         <StaticRouter location={req.url}>
           <App {...data} />
         </StaticRouter>

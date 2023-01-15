@@ -15,11 +15,13 @@ export const Home = ({ data }) => {
   //   return <div>Loading...</div>;
   // }
   return (
-    <div className="home">
-      <Header />
-      {mainData?.genres?.slice(0, 3)?.map((genre) => (
-        <CarousalSection id={genre.id} name={genre.name} key={genre.id} />
-      ))}
-    </div>
+    <Suspense fallback="Loading...">
+      <div className="home">
+        <Header />
+        {mainData?.genres?.slice(0, 3)?.map((genre) => (
+          <CarousalSection id={genre.id} name={genre.name} key={genre.id} />
+        ))}
+      </div>
+    </Suspense>
   );
 };

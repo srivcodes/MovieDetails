@@ -16,7 +16,7 @@ export const fetchGenres = async () => {
 export const fetchMovieDetailsById = async (id) => {
   try {
     const movieDetailUri = encodeURI(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}&language=en-US&${params}`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}&language=en-US&`
     );
     const response = await fetch(movieDetailUri);
     const data = await response.json();

@@ -1,13 +1,12 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import FocusTrap from 'focus-trap-react';
 import cn from 'classnames';
 import useMountTransition from '@hooks/useMountTransition';
 
-
-function createPortalRoot() {
-  const drawerRoot = document.createElement('div');
-  drawerRoot.setAttribute('id', 'drawer-root');
+function createPortalRoot(myDocument) {
+  const drawerRoot = myDocument && document.createElement('div');
+  myDocument && drawerRoot.setAttribute('id', 'drawer-root');
 
   return drawerRoot;
 }
@@ -19,14 +18,17 @@ const Drawer = ({
   position = 'right',
   removeWhenClosed = true
 }) => {
-  const bodyRef = useRef(document.querySelector('body'));
+  const [myDocument, setMyDocument] = useState(null);
+  const bodyRef = useRef(myDocument && document.querySelector('body'));
   const portalRootRef = useRef(
-    document.getElementById('drawer-root') || createPortalRoot()
+    (myDocument && document.getElementById('drawer-root')) ||
+      createPortalRoot(myDocument)
   );
   const isTransitioning = useMountTransition(isOpen, 300);
 
   // Append portal root on mount
   useEffect(() => {
+    setMyDocument(document);
     bodyRef.current.appendChild(portalRootRef.current);
     const portal = portalRootRef.current;
     const bodyEl = bodyRef.current;
