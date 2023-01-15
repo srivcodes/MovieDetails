@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.heart-icon {
+  padding-right: 30px;
+}
+
+.wishlist-heading {
+  display: flex;
+  justify-content: center;
+}
+
+.wishlist-content {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  border: 1px solid black;
+  margin: 5px;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.movie-wishlist {
+  padding-left: 15px;
+}

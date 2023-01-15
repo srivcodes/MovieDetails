@@ -5,21 +5,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
 
 // components
-@import '@components/CarousalSection/CarousalSection.scss';
-@import '@components/Header/Header.scss';
-@import '@components/Drawer/Drawer.scss';
-@import '@components/Carousel/Carousel.scss';
+@import '@styles/carousalSection.scss';
+@import '@styles/header.scss';
+@import '@styles/drawer.scss';
+@import '@styles/carousel.scss';
 
 // pages
-@import '@pages/MovieDetails/MovieDetails.scss';
-@import '@pages/Home/Home.scss';
-
-$background-colour: #eaebea;
-$text-colour: #0c0c0c;
-$secondary-colour: #d8323c;
+@import '@styles/movieDetails.scss';
+@import '@styles/home.scss';
 
 * {
-  background-color: $background-colour;
+  background-color: white;
   font-size: responsive;
   user-select: none;
 }
@@ -28,6 +24,6 @@ $secondary-colour: #d8323c;
   display: flex;
   justify-content: center;
   padding: 5px;
-  color: $secondary-colour;
+  color: black;
   font-size: 50px;
 }

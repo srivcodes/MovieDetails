@@ -1,6 +1,6 @@
 @mixin button-bg($bg) {
   background: $bg;
-  color: white;
+  cursor: pointer;
   &:hover {
     background: darken($bg, 8%);
     transition: all 0.3s ease;
@@ -16,19 +16,32 @@
 
 .details-action {
   .primary-btn {
-    @include button-bg(orange);
+    @include button-bg(#89d5d2);
+    border: 2px solid #008080;
+    font-size: medium;
+    border-radius: 6px;
+    color: black;
   }
   @include font-family(Libre Baskerville);
 }
 .details-adventure {
   .primary-btn {
-    @include button-bg(green);
+    @include button-bg(#b3006a);
+    color: white;
+    box-shadow: 0 5px 0 black;
+    text-transform: uppercase;
+    border-radius: 3px;
+    position: relative;
   }
   @include font-family(Rowdies);
 }
 .details-animation {
   .primary-btn {
-    @include button-bg(blue);
+    @include button-bg(#fed8b1);
+    border: 3px solid #ff781f;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   }
   @include font-family(Source Code Pro);
 }

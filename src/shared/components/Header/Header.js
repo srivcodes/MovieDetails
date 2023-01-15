@@ -25,7 +25,7 @@ export const Header = () => {
           </span>
         </a>
       </h3>
-      <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)} position="right">
+      {/* <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)} position="right">
         <div>
           <button
             className="primary-btn"
@@ -56,7 +56,7 @@ export const Header = () => {
             );
           })}
         </div>
-      </Drawer>
+      </Drawer> */}
     </div>
   );
 };

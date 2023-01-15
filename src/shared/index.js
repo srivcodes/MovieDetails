@@ -5,4 +5,4 @@ import './app.scss';
 
 const container = document.getElementById('app');
 
-createRoot(container).render(<App />);
+createRoot(container).render(<App {...window.__INITIAL_DATA__} />);

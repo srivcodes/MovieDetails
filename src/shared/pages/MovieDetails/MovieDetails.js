@@ -40,9 +40,9 @@ export const MovieDetails = () => {
         <div className="description-section">
           <h1>{data?.original_title}</h1>
           <p>{data?.overview}</p>
-          <button className={`primary-btn`} onClick={handleSubmit}>
+          <a className={`primary-btn`} onClick={handleSubmit}>
             Add to Wishlist
-          </button>
+          </a>
         </div>
       </div>
       <div>

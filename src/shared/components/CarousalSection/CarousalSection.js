@@ -1,6 +1,6 @@
 import React from 'react';
 import useMovieFetch from '@hooks/useMovieFetch';
-import Carousel from '../Carousel/Carousel';
+import Carousel from '@components/Carousel/Carousel';
 
 export const CarousalSection = ({ name: genreName, id: genreId }) => {
   const { data, error, loading } = useMovieFetch(
@@ -14,7 +14,7 @@ export const CarousalSection = ({ name: genreName, id: genreId }) => {
     return <div>loading...</div>;
   }
   return (
-    <div>
+    <div className="genre-section">
       <h3 className="genre-heading">{genreName}</h3>
       {data ? <Carousel movies={data.results} genreName={genreName} /> : null}
     </div>
