@@ -8,7 +8,6 @@ export const Home = ({ data }) => {
   });
   return (
     <div className="home">
-      <Header />
       {mainData?.genres?.slice(0, 3)?.map(({ name: genreName, id }) => (
         <div key={id}>
           <h3 className="genre-heading">{genreName}</h3>

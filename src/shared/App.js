@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
+import { Header } from '@components/Header/Header';
+
 // pages
 import FallbackPage from '@pages/404';
 
@@ -17,7 +19,10 @@ export function App(props) {
           <Route
             path={path}
             element={
-              <C data={serverData} fetchInitialData={fetchInitialData} />
+              <>
+                <Header />
+                <C data={serverData} fetchInitialData={fetchInitialData} />
+              </>
             }
             key={path}
           />

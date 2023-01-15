@@ -12,18 +12,12 @@
 
 // pages
 @import '@styles/movieDetails.scss';
-@import '@styles/home.scss';
 
 * {
   background-color: white;
-  font-size: responsive;
   user-select: none;
-}
 
-.heading {
-  display: flex;
-  justify-content: center;
-  padding: 5px;
-  color: black;
-  font-size: 50px;
+  h1 {
+    margin: 0;
+  }
 }

@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Header } from '@components/Header/Header';
-
 import useLocalStorage from '@hooks/useLocalStorage';
 
 export const MovieDetails = ({ data: serverData }) => {
-  const { wishlistItems, setwishlistItems } = useLocalStorage('wishlist', []);
+  const { storedValue: wishlistItems, setValue: setwishlistItems } =
+    useLocalStorage('wishlist', []);
   const params = useParams();
 
   const [data] = useState(() => {
@@ -23,8 +22,7 @@ export const MovieDetails = ({ data: serverData }) => {
     window.dispatchEvent(new Event('local-storage'));
   };
   return (
-    <div>
-      <Header />
+    <>
       <div className={`details-${params.genreName} page-layout`}>
         <img
           src={`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`}
@@ -45,6 +43,6 @@ export const MovieDetails = ({ data: serverData }) => {
         <p>Status: {data?.status}</p>
         <p>Duration: {data?.runtime} minutes</p>
       </div>
-    </div>
+    </>
   );
 };
