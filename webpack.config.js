@@ -81,11 +81,10 @@ module.exports = [
         },
         {
           test: /\.(sa|sc|c)ss$/i,
-          // test: /\.css$/,
           use: [
             MiniCssExtractPlugin.loader,
             'css-loader',
-            // 'postcss-loader',
+            'postcss-loader',
             'sass-loader'
           ]
         }

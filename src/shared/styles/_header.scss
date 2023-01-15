@@ -1,27 +1,26 @@
 .header {
   display: flex;
   justify-content: space-between;
+  position: relative;
+  align-items: center;
+  padding: 0 16px;
+
+  a {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
 }
 
-.heart-icon {
+.wishlist-button {
   padding-right: 30px;
-}
-
-.wishlist-heading {
-  display: flex;
-  justify-content: center;
-}
-
-.wishlist-content {
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
-  border: 1px solid black;
-  margin: 5px;
-  border-radius: 6px;
-  padding: 8px;
-}
-
-.movie-wishlist {
-  padding-left: 15px;
+  span {
+    display: block;
+  }
 }

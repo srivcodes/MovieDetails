@@ -1,52 +1,41 @@
-.drawer-container {
-  --transition-speed: 0.3s;
-}
-
 .drawer {
-  background: #fff;
-  width: 30%;
-  height: 100%;
-  overflow: auto;
-  position: fixed;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  transition: transform var(--transition-speed) ease;
-  z-index: 1000;
-}
-
-.drawer.right {
-  top: 0;
+  position: absolute;
+  top: 60px;
   right: 0;
-  transform: translateX(100%);
+  width: 350px;
+  height: 320px;
+  overflow-y: scroll;
+  z-index: 2;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 3px;
+
+  .drawer-container {
+    padding: 10px;
+    ul {
+      padding: 0;
+    }
+    h3 {
+      margin: 10px;
+    }
+  }
 }
 
-.drawer-container.in.open .left,
-.drawer-container.in.open .right {
-  transform: translateX(0);
-}
+.wish-list {
+  list-style: none;
+  display: flex;
+  padding: 6px;
+  margin: 5px;
 
-.drawer-container.in.open .top,
-.drawer-container.in.open .bottom {
-  transform: translateY(0);
-}
-
-.backdrop {
-  visibility: hidden;
-  opacity: 0;
-  background: rgba(0, 0, 0, 0.5);
-  transition: opacity var(--transition-speed) ease,
-    visibility var(--transition-speed) ease;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  position: fixed;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.drawer-container.in.open .backdrop {
-  visibility: visible;
-  opacity: 1;
-  pointer-events: auto;
-  z-index: 999;
+  p {
+    margin: 0 16px;
+    max-width: calc(100% - 130px);
+  }
+  img {
+    height: 100px;
+    width: 100px;
+  }
+  i {
+    position: absolute;
+    right: 16px;
+  }
 }

@@ -10,17 +10,11 @@
   list-style: none;
   position: relative;
   scroll-behavior: smooth;
-}
 
-.list-container .item {
-  flex: 0 0 270px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.chevron-style {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  .item {
+    flex: 0 0 270px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

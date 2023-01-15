@@ -1,6 +1,5 @@
 import React, { Suspense, useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import Drawer from '@components/Drawer/Drawer';
+import { Drawer } from '@components/Drawer/Drawer';
 import { FaRegHeart, FaArrowRight } from 'react-icons/fa';
 import useLocalStorage from '@hooks/useLocalStorage';
 
@@ -14,21 +13,22 @@ export const Header = () => {
     setHasMounted(true);
   }, []);
 
-  function removeWishlistHandler(item) {
-    const updatedWishlist = wishItems.filter((wish) => wish.id !== item.id);
-    setWishItems(updatedWishlist);
-  }
   return (
     <div className="header">
       <a href="/">
-        <h3>Movie Details</h3>
+        <h1>Movie Details</h1>
       </a>
-      <h3 className="heart-icon" onClick={() => setIsOpen(!isOpen)}>
-        <span>{hasMounted ? wishItems.length : 0}</span>
+      <a
+        className="wishlist-button"
+        aria-disabled={!hasMounted}
+        onClick={() => setIsOpen(!isOpen)}
+      >
         <span>
           <FaRegHeart />
         </span>
-      </h3>
+        <span>{`Wishlist (${hasMounted ? wishItems.length : 0})`}</span>
+      </a>
+      {isOpen ? <Drawer /> : null}
     </div>
   );
 };

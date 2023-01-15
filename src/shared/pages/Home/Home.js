@@ -1,27 +1,20 @@
-import React, { Suspense, useState } from 'react';
+import React, { useState } from 'react';
 import { Header } from '@components/Header/Header';
-import useMovieFetch from '@hooks/useMovieFetch';
 import { CarousalSection } from '@components/CarousalSection/CarousalSection';
 
 export const Home = ({ data }) => {
-  // const { data, error, loading } = useMovieFetch('genre/movie/list');
-  const [mainData, setMainData] = useState(() => {
+  const [mainData] = useState(() => {
     return _isBrowser_ ? window.__INITIAL_DATA__ : data;
   });
-  // if (error) {
-  //   return <div>{error}</div>;
-  // }
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
   return (
-    <Suspense fallback="Loading...">
-      <div className="home">
-        <Header />
-        {mainData?.genres?.slice(0, 3)?.map((genre) => (
-          <CarousalSection id={genre.id} name={genre.name} key={genre.id} />
-        ))}
-      </div>
-    </Suspense>
+    <div className="home">
+      <Header />
+      {mainData?.genres?.slice(0, 3)?.map(({ name: genreName, id }) => (
+        <div key={id}>
+          <h3 className="genre-heading">{genreName}</h3>
+          <CarousalSection id={id} genreName={genreName} />
+        </div>
+      ))}
+    </div>
   );
 };

@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Header } from '@components/Header/Header';
 
-import useMovieFetch from '@hooks/useMovieFetch';
 import useLocalStorage from '@hooks/useLocalStorage';
 
 export const MovieDetails = ({ data: serverData }) => {
   const [wishlistItems, setwishlistItems] = useLocalStorage('wishlist', []);
   const params = useParams();
-  // const { data, error, loading } = useMovieFetch(`movie/${params.movieId}`);
 
-  const [data, setData] = useState(() => {
+  const [data] = useState(() => {
     return _isBrowser_ ? window.__INITIAL_DATA__ : serverData;
   });
 
@@ -24,13 +22,6 @@ export const MovieDetails = ({ data: serverData }) => {
     setwishlistItems(wishlistItems);
     window.dispatchEvent(new Event('local-storage'));
   };
-
-  // if (error) {
-  //   return <div>{error}</div>;
-  // }
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
   return (
     <div>
       <Header />
@@ -44,7 +35,7 @@ export const MovieDetails = ({ data: serverData }) => {
         <div className="description-section">
           <h1>{data?.original_title}</h1>
           <p>{data?.overview}</p>
-          <a className={`primary-btn`} onClick={handleSubmit}>
+          <a className="primary-btn" onClick={handleSubmit}>
             Add to Wishlist
           </a>
         </div>

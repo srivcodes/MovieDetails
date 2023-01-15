@@ -19,15 +19,15 @@ const Carousel = ({ movies, genreName }) => {
   return (
     <div className="container">
       <a className="nav-arrow" onClick={() => scroll(-boundWidth)}>
-        <FaChevronLeft className="chevron-style" />
+        <FaChevronLeft />
       </a>
       <ul className="list-container" ref={ref}>
-        {movies.map((movie, index) => {
-          return <CarouselItem movie={movie} genreName={genreName} key={movie?.id}/>;
-        })}
+        {movies.map((movie) => (
+          <CarouselItem movie={movie} genreName={genreName} key={movie?.id} />
+        ))}
       </ul>
       <a className="nav-arrow" onClick={() => scroll(boundWidth)}>
-        <FaChevronRight className="chevron-style" />
+        <FaChevronRight />
       </a>
     </div>
   );
