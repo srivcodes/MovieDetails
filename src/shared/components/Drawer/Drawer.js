@@ -17,7 +17,7 @@ export const Drawer = () => {
         <ul>
           {wishItems.map((li) => {
             return (
-              <li key={li.id} className="wish-list">
+              <li key={li.id} className="wishlist">
                 <img
                   src={`https://image.tmdb.org/t/p/w500${li?.poster_path}`}
                   alt={li?.original_title}
