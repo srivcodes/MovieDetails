@@ -21,13 +21,7 @@ export default function useMovieFetch(type, params) {
   };
 
   useEffect(() => {
-    let ignore = false;
-    if (!ignore) {
-      fetchData();
-    }
-    return () => {
-      ignore = true;
-    };
+    fetchData();
   }, [type]);
 
   return { data, loading, error };

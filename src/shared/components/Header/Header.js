@@ -1,6 +1,6 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Drawer } from '@components/Drawer/Drawer';
-import { FaRegHeart, FaArrowRight } from 'react-icons/fa';
+import { FaRegHeart } from 'react-icons/fa';
 import useLocalStorage from '@hooks/useLocalStorage';
 
 export const Header = () => {
@@ -16,12 +16,13 @@ export const Header = () => {
   return (
     <div className="header">
       <a href="/">
-        <h1>Movie Details</h1>
+        <h1 role="banner">Movie Details</h1>
       </a>
       <a
         className="wishlist-button"
         aria-disabled={!hasMounted}
         onClick={() => setIsOpen(!isOpen)}
+        data-testid="wishlist-button"
       >
         <span>
           <FaRegHeart />

@@ -5,6 +5,7 @@ module.exports = {
   },
   moduleNameMapper: {
     '^@components(.*)$': '<rootDir>/src/shared/components$1',
+    '^@pages(.*)$': '<rootDir>/src/shared/pages$1',
     '^@hooks(.*)$': '<rootDir>/src/shared/hooks$1',
     '^.+\\.(css|scss)$': '<rootDir>/jest/no-op.js'
   },
