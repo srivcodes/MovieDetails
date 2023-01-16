@@ -2,11 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const Dotenv = require('dotenv-webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const BundleAnalyzerPlugin =
-  require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const nodeExternals = require('webpack-node-externals');
-const TerserPlugin = require('terser-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = [
   {
@@ -98,7 +95,8 @@ module.exports = [
       new Dotenv(),
       new webpack.DefinePlugin({
         _isBrowser_: 'true'
-      })
+      }),
+      new CompressionPlugin()
 
       // new BundleAnalyzerPlugin()
     ],
@@ -109,10 +107,6 @@ module.exports = [
         '@hooks': path.resolve(__dirname, 'src/shared/hooks'),
         '@styles': path.resolve(__dirname, 'src/shared/styles')
       }
-    },
-    optimization: {
-      minimize: true,
-      minimizer: [new TerserPlugin()]
     }
   }
 ];
